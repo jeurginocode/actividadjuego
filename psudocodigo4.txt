@@ -1,0 +1,66 @@
+Programa memoria_matriz
+Start
+
+    # Declare necessary variables
+    Declare Real  board, row, column, random_value, secret_row, secret_column, secret_value, value, size, 
+    Declare String options
+
+    # Import necessary modules
+    Import random
+    Import time
+
+    # Function to create a random board
+    Function create_board(size, options)
+        Set board = []
+
+        For each row In range(size)
+            Set row = []
+            For each column In range(size)
+                Set random_value = randomly_choose(options)
+                Append random_value to row
+            Append row to board
+        Return board
+    End Function
+    # Function to display the board
+    Function show_board(board)
+        For each row In board
+           Return Display join(row, " ")
+    End Function
+    # Function to hide a secret value on the board
+    Function hide_value(board)
+        Set secret_row = generate_random_integer(0, length(board) - 1)
+        Set secret_column = generate_random_integer(0, length(board[0]) - 1)
+        Set secret_value = board[secret_row][secret_column]
+        Set board[secret_row][secret_column] = "*"
+        Return secret_row, secret_column, secret_value, board
+    End Function
+    # Function to play the game
+    Function play_game(size, options)
+        Set board = create_board(size, options)
+        show_board(board)
+        Display "\nRevealing cards in 2 seconds..."
+        Wait(2)
+        Clear_screen()
+        Set secret_row, secret_column, secret_value, board = hide_value(board)
+        Display "A secret value is hidden on the board!"
+        show_board(board)
+        Set value = input("Try to guess what value it is: ")
+
+        If secret_value == value Then
+            Display "\nCongratulations! You have found the secret value!"
+        Else
+            Display "\nSorry, the secret value was '{}'. Better luck next time!".format(secret_value)
+        Return value
+    End Function
+    # Main program function
+    Function main()
+        Display "Welcome to the Board Game"
+        Set size = convert_to_integer(input("Enter the board size: "))
+        Set options = ['J', 'Q', 'K', 'A', 'B', 'C', 'S', 'M', 'X', 'D', 'Ñ']
+        Return play_game(size, options)
+    End fuction
+
+    If __name__ == "__main__" Then
+        Call main()
+
+End

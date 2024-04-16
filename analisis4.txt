@@ -1,0 +1,28 @@
+Problema: Calcular el Factorial de un Número
+
+El factorial es el producto de los enteros no negativos desde 1 hasta n:
+n! = 1 x 2 x 3 x ... x n
+
+Entrada(s): 
+- el tamaño de la matriz
+- la letra que esta oculta
+
+Salida(s):
+- la matriz que despues de cierto  tiempo unos de sus valores es sustituidas por "*"
+- mensaje de si o no, la letra insertada es la correcta
+
+Otras variables:
+- se utiliza vaias libreria como:random, time, clear_output.
+
+Proceso(s):
+- Se debe solicitar el tamaño de la matriz (que sera en un numero)
+- genera un matriz la que contiene letras que su posicion son aletorias
+- esperar que el tiempo de espera pase
+- se sustituye  un valor por un *  que su posicion se genera aletoriamente 
+- Se le socilicita el valor anterior donde esaba el * 
+- Finalmente, se muestra un mensaje de gana o pierde. si e valor corresponde con lo ingresado 
+
+Restricciones: 
+- Aplica para valores strings
+- el tiempo de cuando se sustituye algun valor por el * es constante
+
