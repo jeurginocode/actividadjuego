@@ -12,19 +12,22 @@ Start
     # Function to create a random board
     Function create_board(size, options)
         Set board = []
-
         For each row In range(size)
             Set row = []
             For each column In range(size)
                 Set random_value = randomly_choose(options)
                 Append random_value to row
             Append row to board
-        Return board
+            End For
+        End For
+        Return row, random_value, 
     End Function
     # Function to display the board
     Function show_board(board)
         For each row In board
-           Return Display join(row, " ")
+             Display join(row, " ")
+        End For
+        Return board
     End Function
     # Function to hide a secret value on the board
     Function hide_value(board)
@@ -50,14 +53,16 @@ Start
             Display "\nCongratulations! You have found the secret value!"
         Else
             Display "\nSorry, the secret value was '{}'. Better luck next time!".format(secret_value)
-        Return value
+        End If
+        Return value, board, secret_row
     End Function
     # Main program function
     Function main()
         Display "Welcome to the Board Game"
         Set size = convert_to_integer(input("Enter the board size: "))
         Set options = ['J', 'Q', 'K', 'A', 'B', 'C', 'S', 'M', 'X', 'D', 'Ñ']
-        Return play_game(size, options)
+        play_game(size, options)
+        Returm size, options
     End fuction
 
     If __name__ == "__main__" Then
